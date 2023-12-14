@@ -6,14 +6,6 @@ import (
 	"book-inventory-system/controllers"
 )
 
-// create Book table
-type Book struct {
-	// ID               int    `json:"id"`
-	Title            string `json:"title"`
-	Author           string `json:"author"`
-	Price            int    `json:"price"`
-	QuantityAvailable int    `json:"quantity_available"`
-}
 
 func main(){
 	
