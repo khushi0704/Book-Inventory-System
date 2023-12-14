@@ -1,4 +1,4 @@
-# Go Bookstore API
+# Book Inventory System - Gofr
 
 This project is a simple RESTful API for managing a book catalog. It is built using the Gofr framework by Go.
 
@@ -32,4 +32,4 @@ Make sure you have the following installed on your machine:
 ### Installation
 Clone the repository to your local machine:
 ```bash
-git clone https://github.com/your-username/go-bookstore-api.git
+git clone https://github.com/khushi0704/Book-Inventory-System.git
