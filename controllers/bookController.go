@@ -45,6 +45,8 @@ func CreateBook(ctx *gofr.Context)(interface{}, error){
 
 	// db layer ------
 	resp, err := ctx.DB().ExecContext(ctx, "INSERT INTO BOOK (Title,Author,Price,QuantityAvailable) VALUES (?,?,?,?)", Title,Author,Price,QuantityAvailable)
+	// Example in CreateBook function
+
 
 	fmt.Print(resp)
 
@@ -159,14 +161,14 @@ func UpdateBookQuantity(ctx *gofr.Context)(interface{}, error){
 	return "Successfully Updated Quantity Of Book", nil
 }
 
-// delete a book 
+// delete a book by id
 func DeleteBook(ctx *gofr.Context)(interface{}, error){
 	req := ctx.Request()
     queryValues := req.URL.Query()
     bookID := queryValues.Get("id")
 
     // Perform the delete operation in the database
-    result, err := ctx.DB().ExecContext(ctx,"DELETE FROM book WHERE BookID = ?", bookID)
+    result, err := ctx.DB().ExecContext(ctx,"DELETE FROM book WHERE book_id = ?", bookID)
     if err != nil {
         fmt.Println("Error deleting book:", err)
         return result, err
