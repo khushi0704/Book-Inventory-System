@@ -24,7 +24,9 @@ func main(){
 
 	// updateBook -
 	// partial update 
-	app.PATCH("/book/{id}",controllers.UpdateBook)
+	app.PATCH("/book",controllers.UpdateBookQuantity)
+	// deleteBook 
+	app.DELETE("/book",controllers.DeleteBook)
 
     // Starts the server, it will listen on the default port 8000.
     // it can be over-ridden through configs

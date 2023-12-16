@@ -112,3 +112,71 @@ func GetBook(ctx *gofr.Context)(interface{}, error){
 
     return book, nil
 }
+
+// update a book by price 
+func UpdateBookQuantity(ctx *gofr.Context)(interface{}, error){
+	requestBody, err := io.ReadAll(ctx.Request().Body)
+    if err != nil {
+        return nil, err
+    }
+
+    formData, err := url.ParseQuery(string(requestBody))
+    if err != nil {
+        return nil, err
+    }
+
+    Title := formData.Get("Title")
+    QuantityAvailableStr := formData.Get("QuantityAvailable")
+    QuantityAvailable, err := strconv.Atoi(QuantityAvailableStr)
+    if err != nil {
+        return nil, err
+    }
+
+	result, err := ctx.DB().ExecContext(ctx, "UPDATE book SET QuantityAvailable = ? WHERE Title = ?", QuantityAvailable, Title)
+
+
+	if err != nil {
+		fmt.Println("Error updating book:", err)
+		return nil, err
+	}
+	
+	// Check rows affected by the update operation
+	rowsAffected, err := result.RowsAffected()
+	if err != nil {
+		return nil, err
+	}
+
+	if rowsAffected == 0 {
+		return nil, fmt.Errorf("no book found with Title: %s", Title)
+	}
+
+	fmt.Println("Book updated successfully")
+	return "Successfully Updated Quantity Of Book", nil
+}
+
+
+// delete a book 
+func DeleteBook(ctx *gofr.Context)(interface{}, error){
+	req := ctx.Request()
+    queryValues := req.URL.Query()
+    bookID := queryValues.Get("id")
+
+    // Perform the delete operation in the database
+    result, err := ctx.DB().ExecContext(ctx,"DELETE FROM book WHERE BookID = ?", bookID)
+    if err != nil {
+        fmt.Println("Error deleting book:", err)
+        return result, err
+    }
+
+	rowsAffected, err := result.RowsAffected()
+    if err != nil {
+        fmt.Println("Error getting rows affected:", err)
+        return nil, err
+    }
+
+	if rowsAffected == 0 {
+        return nil, fmt.Errorf("Book with ID %s is not present", bookID)
+    }
+	
+    return "Successfully deleted Book", nil
+}
