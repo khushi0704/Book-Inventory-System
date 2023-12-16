@@ -6,26 +6,25 @@ import (
 	"book-inventory-system/controllers"
 )
 
-
 func main(){
 	
 	// goFr instance 
 	app := gofr.New()
 
-	// createBook - > http://localhost:8000/books
 	// /books-> a book is getting created 
 	app.POST("/books",controllers.CreateBook)
 
-	// getBook 
+	// to get a book info 
 	app.GET("/book",controllers.GetBook)
 
-	// getAll
+	// to retreive list of all books
 	app.GET("/books",controllers.GetAllBooks)
 
-	// updateBook -
 	// partial update 
+	// to update a book by its quantity available in stock
 	app.PATCH("/book",controllers.UpdateBookQuantity)
-	// deleteBook 
+
+	// to remove a book from db 
 	app.DELETE("/book",controllers.DeleteBook)
 
     // Starts the server, it will listen on the default port 8000.
