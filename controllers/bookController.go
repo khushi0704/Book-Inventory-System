@@ -1,26 +1,30 @@
 package controllers
+
 import (
+	"errors"
 	"fmt"
 	"io"
 	"net/url"
-	"gofr.dev/pkg/gofr"
 	"strconv"
+	"gofr.dev/pkg/gofr"
 )
 
+// create book structure
 type Book struct {
-	BookID           int    `json:"id"`
+	BookID               int    `json:"id"`
 	Title            string `json:"title"`
 	Author           string `json:"author"`
 	Price            int    `json:"price"`
 	QuantityAvailable int    `json:"quantity_available"`
 }
 
-// create book controller 
+// to upload a book 
 func CreateBook(ctx *gofr.Context)(interface{}, error){
 
 	// requestBody --> it is in url-encoded 
 	requestBody, err := io.ReadAll(ctx.Request().Body)
 		
+	// check whether any error is there or not 
 	if err != nil {
 		return nil, err
 	}
@@ -36,32 +40,34 @@ func CreateBook(ctx *gofr.Context)(interface{}, error){
 	Author := formData.Get("Author")
 	Price := formData.Get("Price")
 	QuantityAvailable := formData.Get("QuantityAvailable")
-	
 
 	fmt.Printf("Title : %s, \n Author : %s,\n Price : %s,\n QuantityAvailable: %s\n", Title, Author, Price, QuantityAvailable)
 
-
 	// db layer ------
 	resp, err := ctx.DB().ExecContext(ctx, "INSERT INTO BOOK (Title,Author,Price,QuantityAvailable) VALUES (?,?,?,?)", Title,Author,Price,QuantityAvailable)
-
 
 	fmt.Print(resp)
 
 	if err != nil {
 		return "Not able to create", err
 	}
+
 	return "Successfully Created Book", err
 }
 
-// get all books controller
+// to retreive all books 
 func GetAllBooks(ctx *gofr.Context)(interface{}, error){
+
 	//books array
 	var books []Book
+
 		// Getting the customer from the database using SQL
 		rows, err := ctx.DB().QueryContext(ctx, "SELECT * FROM book")
+
 		if err != nil {
 			return nil, err
 		}
+
 		for rows.Next() {
 			var book Book
 			if err := rows.Scan(&book.BookID, &book.Title,&book.Author, &book.Price,&book.QuantityAvailable); err != nil {
@@ -82,7 +88,7 @@ func GetBook(ctx *gofr.Context)(interface{}, error){
 	title := queryValues.Get("Title")
 
 	if title == "" {
-        return nil, errors.New("Title cannot be empty")
+        return nil, errors.New("title cannot be empty")
     }
 
 	fmt.Printf("Fetching book from db....")
@@ -113,7 +119,7 @@ func GetBook(ctx *gofr.Context)(interface{}, error){
     return book, nil
 }
 
-// update a book by price 
+// update a book by quantity 
 func UpdateBookQuantity(ctx *gofr.Context)(interface{}, error){
 	requestBody, err := io.ReadAll(ctx.Request().Body)
     if err != nil {
@@ -134,7 +140,6 @@ func UpdateBookQuantity(ctx *gofr.Context)(interface{}, error){
 
 	result, err := ctx.DB().ExecContext(ctx, "UPDATE book SET QuantityAvailable = ? WHERE Title = ?", QuantityAvailable, Title)
 
-
 	if err != nil {
 		fmt.Println("Error updating book:", err)
 		return nil, err
@@ -153,7 +158,6 @@ func UpdateBookQuantity(ctx *gofr.Context)(interface{}, error){
 	fmt.Println("Book updated successfully")
 	return "Successfully Updated Quantity Of Book", nil
 }
-
 
 // delete a book 
 func DeleteBook(ctx *gofr.Context)(interface{}, error){
