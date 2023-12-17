@@ -20,7 +20,7 @@ type Book struct {
 
 // to upload a book 
 func CreateBook(ctx *gofr.Context)(interface{}, error){
-
+	
 	// requestBody --> it is in url-encoded 
 	requestBody, err := io.ReadAll(ctx.Request().Body)
 		
@@ -38,22 +38,29 @@ func CreateBook(ctx *gofr.Context)(interface{}, error){
 
 	Title := formData.Get("Title")
 	Author := formData.Get("Author")
-	Price := formData.Get("Price")
-	QuantityAvailable := formData.Get("QuantityAvailable")
+	PriceStr := formData.Get("Price")
+	QuantityAvailableStr := formData.Get("QuantityAvailable")
 
-	fmt.Printf("Title : %s, \n Author : %s,\n Price : %s,\n QuantityAvailable: %s\n", Title, Author, Price, QuantityAvailable)
+	// Convert string Price to integer
+	Price, err := strconv.Atoi(PriceStr)
+	if err != nil {
+		return nil, err // Handle the error if conversion fails
+	}
 
+	// Convert string QuantityAvailable to integer
+	QuantityAvailable, err := strconv.Atoi(QuantityAvailableStr)
+	if err != nil {
+		return nil, err // Handle the error if conversion fails
+	}
+
+	fmt.Printf("Title : %s, \n Author : %s,\n Price : %d,\n QuantityAvailable: %d\n", Title, Author, Price, QuantityAvailable)
 	// db layer ------
 	resp, err := ctx.DB().ExecContext(ctx, "INSERT INTO BOOK (Title,Author,Price,QuantityAvailable) VALUES (?,?,?,?)", Title,Author,Price,QuantityAvailable)
 	// Example in CreateBook function
-
-
 	fmt.Print(resp)
-
 	if err != nil {
 		return "Not able to create", err
 	}
-
 	return "Successfully Created Book", err
 }
 
