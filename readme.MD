@@ -54,7 +54,7 @@ The base URL for all endpoints is:
 - **Description:**
   - Retrieves a list of all books.
 
-![view_books](https://github.com/khushi0704/Book-Inventory-System/blob/main/assets/view_books.png)
+![view_books](https://github.com/khushi0704/Book-Inventory-System/assets/64957861/1ca28fe5-666e-4341-9db1-f57b05875e80)
 
 #### 2. **Get Book by Title**
 
@@ -65,7 +65,7 @@ The base URL for all endpoints is:
   - Retrieves information about a specific student based on the provided ID.
 
 
-![get_book](https://github.com/khushi0704/Book-Inventory-System/blob/main/assets/get_book.png)
+![get_book](https://github.com/khushi0704/Book-Inventory-System/assets/64957861/fd7815d0-3e7e-4b5a-99bc-216d3ae233e9)
 
 #### 3. **Create a New Book**
 
@@ -76,7 +76,7 @@ The base URL for all endpoints is:
   - Creates a new book record.
     
 
-![create_book](https://github.com/khushi0704/Book-Inventory-System/blob/main/assets/create_book.png)
+![create_book](https://github.com/khushi0704/Book-Inventory-System/assets/64957861/d678c382-06f7-4ad2-91d6-c3c5cdede49a)
 
 #### 4. **Update Book Quantity Available by Title**
 
@@ -86,7 +86,7 @@ The base URL for all endpoints is:
 - **Description:**
   - Updates information about a specific book based on the provided title.
 
-  ![update_book](https://github.com/khushi0704/Book-Inventory-System/blob/main/assets/update_book.png)
+![update_book](https://github.com/khushi0704/Book-Inventory-System/assets/64957861/30b5da20-7a7e-42db-99e4-62ada32128cc)
  
 #### 5. **Delete Book by ID**
 
@@ -96,7 +96,7 @@ The base URL for all endpoints is:
 - **Description:**
   - Deletes a specific book record based on the provided ID.
 
-![delete_book](https://github.com/khushi0704/Book-Inventory-System/blob/main/assets/delete_book.png)
+![delete_book](https://github.com/khushi0704/Book-Inventory-System/assets/64957861/bbc45544-353a-4265-b6f8-919432bb8696)
 
 ### Running Tests
 
@@ -109,9 +109,9 @@ The base URL for all endpoints is:
 ## UML diagrams
 * Use Case Diagram:
   
-![use_case](https://github.com/khushi0704/Book-Inventory-System/blob/main/assets/use_case.png)
+![use_case](https://github.com/khushi0704/Book-Inventory-System/assets/64957861/cf5ca9ee-27b5-44fd-90c2-8f5b24bb8536)
 
 * Sequence Diagram: 
 
-![sequence](https://github.com/khushi0704/Book-Inventory-System/blob/main/assets/sequence.png)
+![sequence](https://github.com/khushi0704/Book-Inventory-System/assets/64957861/4f400e5d-4ba3-46d8-b51d-ad050efd431f)
 
