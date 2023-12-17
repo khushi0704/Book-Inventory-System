@@ -36,7 +36,11 @@ Before you begin, ensure you have the following installed on your machine:
     ```bash
     http://localhost:8000/books
     
-## API Endpoints
+## API Endpoints check using Postman
+
+```bash
+https://www.postman.com/research-cosmologist-13477158/workspace/book-inventory-system/collection/31770885-5a0012d2-b962-41e8-b968-42503741ae8c?action=share&creator=31770885
+```
 
 The application provides RESTful API endpoints for CRUD operations on book records.
 
@@ -97,6 +101,25 @@ The base URL for all endpoints is:
   - Deletes a specific book record based on the provided ID.
 
 ![delete_book](https://github.com/khushi0704/Book-Inventory-System/assets/64957861/bbc45544-353a-4265-b6f8-919432bb8696)
+
+# Database 🛢️
+
+The project utilizes a MySQL database to store information about book records. The MySQL database is set up as a Docker container for easy deployment and management.
+
+## Database Schema 🗃️
+
+- Table: `book`
+  - Columns: `book_id` (int) auto-increment primary key, `Title` (varchar), `Author` (varchar), Price (int), QuantityAvailable (int)
+
+
+## Database Setup 🐳
+- Docker Container
+![docker](https://github.com/khushi0704/Book-Inventory-System/assets/64957861/1872ffb1-b4fd-42f1-b5ed-ba2f04f4b420)
+
+- To run the MySQL database locally as a Docker container, use the following command:
+```bash
+docker run --name gofr-mysql -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=book_db -p 3308:3306 -d mysql:8.0.25
+```
 
 ### Running Tests
 
