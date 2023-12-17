@@ -34,7 +34,7 @@ Before you begin, ensure you have the following installed on your machine:
 5. Open Server
     
     ```bash
-    http://localhost:80/books
+    http://localhost:8000/books
     
 ## API Endpoints
 
@@ -54,7 +54,7 @@ The base URL for all endpoints is:
 - **Description:**
   - Retrieves a list of all books.
 
-![view_books](githublink)
+![view_books](https://github.com/khushi0704/Book-Inventory-System/blob/main/assets/view_books.png)
 
 #### 2. **Get Book by Title**
 
@@ -65,7 +65,7 @@ The base URL for all endpoints is:
   - Retrieves information about a specific student based on the provided ID.
 
 
-![get_book](githublink)
+![get_book](https://github.com/khushi0704/Book-Inventory-System/blob/main/assets/get_book.png)
 
 #### 3. **Create a New Book**
 
@@ -76,7 +76,7 @@ The base URL for all endpoints is:
   - Creates a new book record.
     
 
-![create_book](githublink)
+![create_book](https://github.com/khushi0704/Book-Inventory-System/blob/main/assets/create_book.png)
 
 #### 4. **Update Book Quantity Available by Title**
 
@@ -86,7 +86,7 @@ The base URL for all endpoints is:
 - **Description:**
   - Updates information about a specific book based on the provided title.
 
-  ![update_book](githublink)
+  ![update_book](https://github.com/khushi0704/Book-Inventory-System/blob/main/assets/update_book.png)
  
 #### 5. **Delete Book by ID**
 
@@ -96,7 +96,7 @@ The base URL for all endpoints is:
 - **Description:**
   - Deletes a specific book record based on the provided ID.
 
-![delete_book](githublink)
+![delete_book](https://github.com/khushi0704/Book-Inventory-System/blob/main/assets/delete_book.png)
 
 ### Running Tests
 
@@ -109,9 +109,9 @@ The base URL for all endpoints is:
 ## UML diagrams
 * Use Case Diagram:
   
-![use_case](githublink)
+![use_case](https://github.com/khushi0704/Book-Inventory-System/blob/main/assets/use_case.png)
 
 * Sequence Diagram: 
 
-![sequence](githublink)
+![sequence](https://github.com/khushi0704/Book-Inventory-System/blob/main/assets/sequence.png)
 
